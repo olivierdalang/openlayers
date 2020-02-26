@@ -8,14 +8,14 @@ import {OSM, GlTiles} from '../src/ol/source.js';
 GeoTIFF.fromUrl('data/geotiff/PNOA_MDT200_EPSG3857_Valencia_8bit.tiff').then(
   function(loadedGeoTiff) {
 
-const map = new Map({
-  layers: [
-    //     new TileLayer({
-    //       source: new OSM()
-    //     }),
-    new TileLayer({
-      source: new GlTiles({
-        fragmentShader: `
+    const map = new Map({
+      layers: [
+        //     new TileLayer({
+        //       source: new OSM()
+        //     }),
+        new TileLayer({
+          source: new GlTiles({
+            fragmentShader: `
         void main(void) {
           vec4 texelColour = texture2D(uTexture0, vec2(vTextureCoords.s, vTextureCoords.t));
           gl_FragColor = vec4(texelColour.gbr, 1.0);
@@ -54,20 +54,20 @@ const map = new Map({
 //           gl_FragColor.a = 1.;
         }
         `,
-        textureSources: [
-          new OSM(),
-          loadedGeoTiff
-        ]
+            textureSources: [
+              new OSM(),
+              loadedGeoTiff
+            ]
+          })
+        })
+      ],
+      target: 'map',
+      view: new View({
+        center: [0, 4800000],
+        zoom: 7
       })
-    })
-  ],
-  target: 'map',
-  view: new View({
-    center: [0, 4800000],
-    zoom: 7
-  })
-});
+    });
 
   }
-)
+);
 
