@@ -4,8 +4,11 @@ import TileLayer from '../src/ol/layer/Tile.js';
 // import {OSM, TileDebugAsync} from '../src/ol/source.js';
 import {OSM, GlTiles} from '../src/ol/source.js';
 
+// const GEOTIFF = 'data/geotiff/PNOA_MDT200_EPSG3857_Valencia_8bit.tiff';
+const GEOTIFF = 'http://oin-hotosm.s3.amazonaws.com/5a00a35831eff4000c380570/0/b87bbaed-f735-4c31-a84d-0bc86a6055fe.tif';
+// const GEOTIFF = 'https://inondations-dakar.org/dataset/6d0ec6a3-3a7b-4dd4-8f52-bebd19036b68/resource/5db64207-b35e-4595-9727-81c43935c16a/download/feaab57e-98e0-46ec-8ca8-19d07d9ef618.tif';
 
-GeoTIFF.fromUrl('data/geotiff/PNOA_MDT200_EPSG3857_Valencia_8bit.tiff').then(
+GeoTIFF.fromUrl(GEOTIFF).then(
   function(loadedGeoTiff) {
 
 const map = new Map({
